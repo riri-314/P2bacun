@@ -1,0 +1,27 @@
+{% extends "menue.html" %}
+{% block title %}Menue{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'home.css') }}">
+{% endblock %}
+
+{% block content%}
+<div class="rectangle">
+    <h1>
+        LINFO1002 Projet 2
+        Groupe : kiki 
+    </h1>
+</div>
+
+<div class="rectangle">
+    <h1>
+        nombre de males
+	{{male}}
+    </h1>
+</div>
+
+
+{%endblock%}
+
+
+
