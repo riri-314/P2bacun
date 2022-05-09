@@ -20,7 +20,7 @@ def incerte_data(files):
                 cursor.execute(i) # add the line to the db
 
 
-files = ["animals.sql"]
+files = ["insert_velages_complications.sql", "insert_velages.sql", "insert_types.sql", "insert_familles.sql", "insert_complications.sql", "insert_animaux_velages.sql", "insert_animaux_types.sql", "insert_animaux.sql"]
 incerte_data(files)
 
 conn.commit()
