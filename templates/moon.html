@@ -6,11 +6,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
  
   
-  <title>Graphique du nombre de vélages</title>
+  <title>Vélages en pleine lune</title>
  </head>
  <body>
-  <h1>Graphique vélages</h1>
-
+  <h1>Full Moon</h1>
    
    <canvas id="graphique" width="200px" height="75px"></canvas>
    <script>
@@ -20,7 +19,7 @@
  var myChart = new Chart(ctx, {
  type: 'bar',   // le type du graphique
  data: {        // les données
-     labels: {{ x | safe }},
+     labels: ["Pleine lune", "Non pleine lune"],
      datasets: [{
                  label: 'Nombre de vélages',
                  data: {{ y | safe }}
