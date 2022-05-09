@@ -21,7 +21,45 @@
 </div>
 
 
-{%endblock%}
+<h1>Choix de la population à étudier</h1>
+<FORM method="post">
+    <SELECT name="famille" size="1">
+        <OPTION selected>Choix famille
+        {% for famille in familles %}
+            <OPTION>{{famille}}
+        {% endfor %}
+    </SELECT>
+    <SELECT name="mois" size="1">
+        <OPTION selected>Choisissez un mois
+        {% for month in months %}
+            <OPTION>{{month}}
+        {% endfor %}
+    </SELECT>
+    <SELECT name="annee" size="1">
+        <OPTION selected>Choisissez une année
+        {% for year in years %}
+            <OPTION>{{year}}
+        {% endfor %}
+    </SELECT>
+
+    <h2>Choix du graphique à montrer</h2>
+    <SELECT name="graph" size="1">
+        <OPTION selected>Nombre de velages
+        <OPTION>Pleine Lune
+        <OPTION>Distribution des races
+        <OPTION>Nombre de mort-né
+        <OPTION>Nombre de velages compliqués
+        </SELECT>
+    <br>
+    <br>
+    <div>
+        <input class="bouton_afficher" type="submit" value="Afficher">
+            
+        <p style="color:red">{{ error_msg }}</p>
+
+    </div>
+</FORM>
+{% endblock %}
 
 
 

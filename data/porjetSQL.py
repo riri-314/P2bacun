@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import sqlite3
-from wts import wts
+from wts import wts # wts is used to ass data to table
 #BY Delphin Blehoussi
 # WTS = Write To Sqlite
 #installation du package https://pypi.org/project/wts/ donc le github est https://github.com/Chaton-mechant/WTS
@@ -22,7 +22,7 @@ from wts import wts
 #Vos commandes doivent être des commandes sql insert valides.
 #Vos fichiers sql doivent être dans le même répertoire que le fichier de base de données.
 
-x =  sqlite3.connect('ProjetSQl.sqlite')
+x =  sqlite3.connect('p2.sqlite')
 # peut acceder à ce fichier grace à la fonction sqlite3.connect()
 #return une class connection qui permet d’interagir avec la base de données
 
@@ -119,9 +119,9 @@ def CreateTable(n):
 #CreateTable(112)
 def Insert(ListInsert):
     #ListInsert est une liste contenant le nom des fichiers SQL
-    a = "ProjetSQL.sqlite"
+    a = "p2.sqlite"
     for x in ListInsert:
-        wts.wts(x, "ProjetSQL.sqlite")
+        wts.wts(x, "p2.sqlite")
      
 
 ListInsert=["insert_familles.sql","insert_animaux.sql","insert_types.sql","insert_animaux_types.sql","insert_velages.sql",
