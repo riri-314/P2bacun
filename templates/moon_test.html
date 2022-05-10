@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vélages en pleine lune</title>
+    <meta charset="UTF-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+
+</head>
+<body>
+    <h1>Graphique de la répartition des naissances pleine lune et non pleine lune</h1>
+    <canvas id="graphique"></canvas>
+    <script>
+        var ctx = document.getElementById('graphique').getContext('2d');
+        ctx.canvas.width = 200;
+        ctx.canvas.height = 75;
+        var myChart = new Chart(ctx, {
+            type:'bar',
+            data:{
+                labels: ["Pleine lune", "Non pleine lune"],
+                datasets: [{
+                    label: 'Nombre de vélages',
+                    data: {{ y | safe }},
+                    //backgroundColor: "rgba(100,100,100,0.65)", 
+                    backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 205, 86)'
+                    ],
+                }]
+            },
+            options: {
+                scales:{
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
+    </script>
+</body>

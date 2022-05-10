@@ -120,7 +120,7 @@ def home():
 							x_axis[j-1] += 1 
 #				print(x_axis)
 #				print(y_axis)
-				return flask.render_template("velages.html", x = y_axis, y = x_axis)
+				return flask.render_template("velages_test.html", x = y_axis, y = x_axis)
 		
 		if graph == "Pleine Lune":
 				tmp_date =[]
@@ -154,7 +154,7 @@ def home():
 				y_axis.append(j)
 				y_axis.append(len(tmp_date)-j)
 
-				return flask.render_template("moon.html", y = y_axis)
+				return flask.render_template("moon_test.html", y = y_axis)
 		
 		if graph == "Distribution des races":
 			races_cow  = ["Holstein", "Blanc Bleu Belge", "Jersey"]
@@ -181,7 +181,7 @@ def home():
 			for x in data:
 				races.append((x*100)/tot)
 
-			return render_template("races.html", races = races, races_cow = races_cow)
+			return render_template("races_test.html", races = races, races_cow = races_cow)
 
 	male = nb_male() #number of males in the db
 	return render_template("home.html", familles = familles, months = months, years = years, male=male)
