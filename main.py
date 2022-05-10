@@ -157,10 +157,32 @@ def home():
 				return flask.render_template("moon.html", y = y_axis)
 		
 		if graph == "Distribution des races":
-			print("ToDo")
-		
-
+			races_cow  = ["Holstein", "Blanc Bleu Belge", "Jersey"]
+			data = []
+			tot = 0
+			races = []
+			#tmp_race = 0
+			for race in races_cow:
+				tmp_race = 0
+				if famille == "Choisissez une famille":
+					for x in cursor.execute("SELECT animal_id FROM animaux_types WHERE type_id IN (SELECT id FROM types WHERE type LIKE '{}')".format(race)):
+						tmp_race += 1
+				else:
+					#for x in cursor.execute("SELECT animal_id FROM animaux_types WHERE type_id IN (SELECT id FROM types WHERE type LIKE '{}')".format(race)):
+					
+					for x in cursor.execute("SELECT id FROM animaux WHERE famille_id IN (SELECT id FROM familles WHERE nom LIKE '{}') AND id IN (SELECT animal_id FROM animaux_types WHERE type_id IN (SELECT id FROM types WHERE type LIKE '{}'))".format(famille, race)):
+						tmp_race += 1
+				
+				data.append(tmp_race)
 			
+			for x in data:
+				tot += x
+
+			for x in data:
+				races.append((x*100)/tot)
+
+			return render_template("races.html", races = races, races_cow = races_cow)
+
 	male = nb_male() #number of males in the db
 	return render_template("home.html", familles = familles, months = months, years = years, male=male)
 

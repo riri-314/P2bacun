@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+ 
+  
+  <title>Graphique de la distribution des races</title>
+ </head>
+ <body>
+  <h1>Graphique distribution des races</h1>
+
+   
+   <canvas id="graphique" width="200px" height="75px"></canvas>
+   <script>
+ // l'identifiant est celui du canevas
+ var ctx = document.getElementById('graphique').getContext('2d');
+ // création du graphique
+ var myChart = new Chart(ctx, {
+ type: 'pie',   // le type du graphique
+ data: {        // les données
+     labels: {{ races_cow | safe }},
+     datasets: [{
+                 label: '',
+                 data: {{ races | safe }}
+              
+                }]
+        }
+
+      }
+ );
+   </script>
+
+ </body>
+</html>
