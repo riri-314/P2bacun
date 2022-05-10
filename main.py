@@ -183,8 +183,8 @@ def home():
 
 			return render_template("races_test.html", races = races, races_cow = races_cow)
 
-	male = nb_male() #number of males in the db
-	return render_template("home.html", familles = familles, months = months, years = years, male=male)
+	#male = nb_male() #number of males in the db
+	return render_template("home.html", familles = familles, months = months, years = years)
 
 # launch site
 if __name__ == '__main__':
