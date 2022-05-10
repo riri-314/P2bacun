@@ -7,6 +7,8 @@ import sqlite3
 
 import flask
 
+#made by Henri Pihet (NOMA: 66151900) 
+# and Kevin Anthony, Jean Tchouanguep Ngansop
 
 # creat app
 app = Flask(__name__, template_folder='templates')
