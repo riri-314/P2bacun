@@ -16,7 +16,7 @@
         var myChart = new Chart(ctx, {
             type:'bar',
             data:{
-                labels: ["Pleine lune", "Non pleine lune"],
+                labels: {{ x | safe }},
                 datasets: [{
                     label: 'Nombre de vélages',
                     data: {{ y | safe }},
