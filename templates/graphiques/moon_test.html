@@ -1,13 +1,20 @@
+{% extends "index.html" %}
+<!--cette commande fait que moon_test.html heritera de tout les propriétés de index.html -->
+<!--Donc plu besoin de mettre :
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-	<title>Vélages</title>
+	<title>Repartition des races</title>
     <meta charset="UTF-8">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
-
 </head>
-<body>
-    <h1>Graphique du nombre de vélages</h1>
+ -->
+{% block title %}
+    Vélages en pleine lune
+{% endblock %}
+
+{% block content %}
+    <h1>Graphique de la répartition des naissances pleine lune et non pleine lune</h1>
     <canvas id="graphique"></canvas>
     <script>
         var ctx = document.getElementById('graphique').getContext('2d');
@@ -21,7 +28,10 @@
                     label: 'Nombre de vélages',
                     data: {{ y | safe }},
                     //backgroundColor: "rgba(100,100,100,0.65)", 
-                    backgroundColor: 'rgb(255, 99, 132)',
+                    backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 205, 86)'
+                    ],
                 }]
             },
             options: {
@@ -36,4 +46,4 @@
         });
 
     </script>
-</body>
+{% endblock %}

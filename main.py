@@ -101,9 +101,10 @@ def home():
 				#print(tmp_date)
 
 				if len(tmp_date) == 0:
-					y_bis = 0
-					x_bis = "Pas de vélages sur cette période"
-					return x_bis, y_bis
+					return flask.render_template(
+						"graphiques/no_result.html",
+						familles=familles, months=months, years=years
+					)
 		
 				y_axis.append(tmp_date[0])
 	
@@ -122,7 +123,11 @@ def home():
 							x_axis[j-1] += 1 
 #				print(x_axis)
 #				print(y_axis)
-				return flask.render_template("velages_test.html", x = y_axis, y = x_axis)
+				return flask.render_template(
+					"graphiques/velages_test.html",
+					x = y_axis, y = x_axis,
+					familles=familles, months=months, years=years
+				)
 		
 		if graph == "Pleine Lune":
 				tmp_date =[]
@@ -150,9 +155,10 @@ def home():
 				tmp_date.sort()
 				
 				if len(tmp_date) == 0:
-					y_bis = 0
-					x_bis = "Pas de vélages sur cette période"
-					return x_bis, y_bis
+					return flask.render_template(
+						"graphiques/no_result.html",
+						familles=familles, months=months, years=years
+					)
 				
 				for x in tmp_date:
 					for y in full_moon_dates:
@@ -162,7 +168,11 @@ def home():
 				y_axis.append(j)
 				y_axis.append(len(tmp_date)-j)
 					
-				return flask.render_template("moon_test.html", y = y_axis, x = x_axis)
+				return flask.render_template(
+					"graphiques/moon_test.html",
+					y = y_axis, x = x_axis,
+					familles=familles, months=months, years=years
+				)
 		
 		if graph == "Distribution des races":
 			races_cow  = ["Holstein", "Blanc Bleu Belge", "Jersey"]
@@ -189,11 +199,18 @@ def home():
 			for x in data:
 				races.append((x*100)/tot)
 
-			return render_template("races_test.html", races = races, races_cow = races_cow)
+			return render_template(
+				"graphiques/races_test.html",
+				races = races, races_cow = races_cow,
+				familles=familles, months=months, years=years
+			)
 
 	#male = nb_male() #number of males in the db
-	return render_template("home.html", familles = familles, months = months, years = years)
+	return render_template(
+		"index.html",
+		familles = familles, months = months, years = years
+	)
 
 # launch site
 if __name__ == '__main__':
-    app.run()
+	app.run()

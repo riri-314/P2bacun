@@ -1,0 +1,66 @@
+* {
+	font-family: Georgia, serif;
+}
+
+body {
+	display: grid;
+	grid-template-areas: 'n c';
+
+	grid-template-columns: 1fr 3fr;
+	grid-column-gap: 5px;
+
+	width: 100vw;
+	height: 100vh;
+}
+
+.proj-navigation {
+	grid-area: n;
+	background-image: url('nav-background.jpg');
+	background-size: cover;
+
+	border-radius: 30px 0 0 30px;
+	padding: 30px;
+
+	display: flex;
+	flex-direction: column;
+}
+
+.proj-navigation-item {
+	border-radius: 5px;
+	padding: 5px;
+	margin-top: 10px;
+	background-color: yellowgreen;
+	outline: white solid 3px;
+	text-align: center;
+}
+
+.proj-navigation > nav {
+	background-color: lightyellow;
+}
+
+.proj-content {
+	grid-area: c;
+
+	background-color: #dddcdd;
+
+	border-radius: 0 30px 30px 0;
+	padding: 30px;
+}
+
+/* Legacy table layout black magik :^) */
+
+form {
+    display: table;
+}
+
+form > div {
+    display: table-row;
+}
+
+label, input {
+    display: table-cell;
+}
+
+label {
+    width: 40%;
+}

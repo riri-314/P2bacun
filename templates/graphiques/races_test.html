@@ -1,12 +1,19 @@
+{% extends "index.html" %}
+<!--cette commande fait que races_test.html heritera de tout les propriétés de index.html -->
+<!--Donc plu besoin de mettre :
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
 	<title>Repartition des races</title>
     <meta charset="UTF-8">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
-
 </head>
-<body>
+ -->
+{% block title %}
+    Distribution des races
+{% endblock %}
+
+{% block content %}
     <h1>Graphique de la répartition des races</h1>
     <canvas id="graphique"></canvas>
     <script>
@@ -31,4 +38,5 @@
         });
 
     </script>
-</body>
+
+{% endblock %}

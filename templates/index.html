@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<title>LINFO1002 Projet 2 - {% block title %}Home{% endblock %}</title>
+    <meta charset="UTF-8"/>
+    <meta name="author" content="Henri Pihet"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+</head>
+
+<body>
+    <nav class="proj-navigation">
+        <a class="proj-navigation-item" href="/">Acceuil</a>
+    </nav>
+
+    <section class="proj-content">
+        <header>LINFO1002 Projet 2 - Groupe : Martin 7</header>
+
+        <p>Etudiants : Henri Pihet, Kevin Anthony, Jean-Yves Tchouanguep Ngansop</p>
+
+        <form method="post">
+            <div>
+                <label for="famille">Choix de la famille</label>
+                <select name="famille" id="famille" size="1">
+                    <OPTION selected>Choisissez une famille
+                    {% for famille in familles %}
+                        <OPTION>{{famille}}
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label for="mois">Choix du mois</label>
+                <select name="mois" id="mois" size="1">
+                    <OPTION selected>Mai
+                    {% for month in months %}
+                        <OPTION>{{month}}
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label for="annee">Choix de l'année</label>
+                <select name="annee" id="annee" size="1">
+                    <OPTION selected>2001
+                    {% for year in years %}
+                        <OPTION>{{year}}
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label for="graph">Choix du graphique à montrer</label>
+                <select name="graph" id="graph" size="1">
+                    <option selected>Nombre de velages
+                    <option>Pleine Lune
+                    <option>Distribution des races
+                </select>
+            </div>
+            <br/>
+            <br/>
+            <div>
+                <input class="bouton_afficher" type="submit" value="Afficher graphique">
+                <p style="color:red">{{ error_msg }}</p>
+            </div>
+        </form>
+
+        <main>
+            {% block content %}{% endblock %}
+            <!--affichera les différents tableaux -->
+        </main>
+    </section>
+</body>
+</html>
